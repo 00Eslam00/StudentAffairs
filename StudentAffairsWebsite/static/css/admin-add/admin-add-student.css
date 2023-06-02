@@ -1,0 +1,131 @@
+:root {
+	--mainColor: #3aa8ef;
+}
+
+* {
+	font-size: 26px;
+}
+
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+
+
+h1 {
+	text-align: center;
+	background-color: #fafafa;
+	padding: 10px;
+	margin: 0 0 40px 0;
+	display: flex;
+	justify-content: center;
+	font-size: 32px;
+}
+
+main {
+	padding: 10px;
+	width: 80%;
+	margin: 0 auto;
+	background-color: #fafafa;
+	border-radius: 10px;
+}
+
+form {
+	margin: 0 auto;
+	display: grid;
+	grid-template-areas:
+		"name name phone phone"
+		"email email gender gender"
+		"address address bdate bdate"
+		"stat stat . ."
+		"submit submit reset reset";
+	justify-content: space-around;
+	grid-gap: 30px;
+}
+
+/* label {
+	font-weight: bold;
+} */
+
+input,
+select {
+	width: 85%;
+	padding: 10px;
+	border-radius: 8px;
+	outline-color: var(--mainColor);
+}
+
+.name,
+.email,
+.address,
+.gender {
+	margin-left: 85px;
+}
+
+button {
+	background-color: #3aa8ef;
+	color: #fff;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 8px;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+}
+
+button:hover {
+	background-color: #0069d9;
+}
+
+.name {
+	grid-area: name;
+}
+
+.lname {
+	grid-area: lname;
+}
+
+.bdate {
+	grid-area: bdate;
+}
+
+.gender {
+	grid-area: gender;
+	margin-left: 0px;
+}
+
+.stat {
+	grid-area: stat;
+	margin-left: 85px;
+}
+
+.email {
+	grid-area: email;
+}
+
+.phone {
+	grid-area: phone;
+}
+
+.address {
+	grid-area: address;
+}
+
+.submit {
+	grid-area: submit;
+	margin-top: 20px;
+	margin-left: 68%;
+	display: inline-block;
+}
+
+.reset {
+	grid-area: reset;
+	margin-top: 20px;
+	display: inline-block;
+}

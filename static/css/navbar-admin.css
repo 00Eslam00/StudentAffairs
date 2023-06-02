@@ -1,0 +1,9 @@
+nav .navbar-content .nav-el {
+    margin-right: -10px;
+    padding: 8px 10px;
+}
+
+nav .nav-el:last-child .dropdown-content {
+    right: -5px;
+    width: 200px;
+}

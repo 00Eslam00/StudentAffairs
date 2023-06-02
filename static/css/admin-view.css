@@ -1,0 +1,258 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 20px auto;
+	justify-content: center;
+	width: 80%;
+}
+
+.form-size {
+
+	font-size: 16px;
+	padding: 8px;
+	height: 50px;
+	border: none;
+
+}
+
+
+
+form {
+	width: fit-content;
+	margin-top: 100px;
+	display: flex;
+	justify-content: space-around;
+}
+
+
+
+.selection {
+	background-color: #f2f2f2;
+	outline-color: #3aa8ef;
+	margin-right: 3px;
+}
+
+
+.search-btn {
+	background-color: #3aa8ef;
+	border-radius: 4px;
+	color: white;
+	font-size: 16px;
+	padding: 12px 12px;
+	height: 50px;
+	border: none;
+	cursor: pointer;
+	margin-left: 5px;
+}
+
+.search-bar {
+	width: 600px;
+	padding: 10px;
+	outline-color: #3aa8ef;
+	border-radius: 8px;
+}
+
+
+.filter-values {
+	margin: 20px 0;
+
+	width: 100%;
+	background-color: white;
+	height: 200px;
+	overflow-y: auto;
+
+}
+
+.filter-item {
+	min-width: 60px;
+	max-width: 100%;
+	background-color: #3aa8ef;
+	color: white;
+	font-size: 11px;
+	padding: 6px;
+	border-radius: 8px;
+	margin: 7px 6px;
+	height: fit-content;
+	display: inline-block;
+}
+
+.delete {
+	color: white;
+	padding: 5px;
+	cursor: pointer;
+}
+
+
+table {
+	width: 98%;
+	margin: 0 auto;
+	border-spacing: 0 3px;
+	table-layout: fixed;
+}
+
+
+
+table th {
+	background-color: #3aa8ef;
+	padding: 13px 2px;
+	text-align: center;
+	color: white;
+	font-size: 16px;
+}
+
+
+.select-stat {
+	font-weight: 800px;
+	font-size: 39px;
+	text-align: center;
+}
+
+table tbody tr {
+	background-color: #ddd;
+	text-align: center;
+	cursor: default;
+}
+
+table tbody tr td {
+	padding: 10px 1px;
+}
+
+td {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+/* table tbody tr td::selection {
+	color: transparent;
+background-color: transparent;
+}
+
+*/
+.select-stat {
+	background-color: #3aa8ef;
+	font-size: 16px;
+	color: white;
+	outline: none;
+	border: none;
+	font-weight: bold;
+}
+
+
+
+
+.select-stat option {
+	background-color: white;
+	color: #333;
+
+}
+
+.std-stat {
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+
+.hide-stat,
+.hide-filter {
+	display: none;
+}
+
+.active {
+	background-color: #bbb;
+}
+
+table tr:hover {
+	background-color: #ccc;
+}
+
+
+
+
+
+
+#contextMenu {
+	position: absolute;
+	z-index: 100;
+	width: 200px;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	box-shadow: 2px 2px 6px #999999;
+	padding: 5px 0;
+	border-radius: 5px;
+}
+
+#contextMenu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#contextMenu li {
+	padding: 7px 10px;
+	font-size: 14px;
+	color: black;
+	cursor: pointer;
+}
+
+#contextMenu li:hover {
+	background-color: #f2f2f2;
+}
+
+
+
+.confirmation-dialogue {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+	padding: 20px;
+	width: 400px;
+	text-align: center;
+}
+
+.confirmation-dialogue p {
+	margin: 0 0 20px;
+}
+
+.dialogue-btn {
+	border: none;
+	background-color: #0077cc;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-right: 20px;
+	transition: background-color 0.2s ease-in-out;
+}
+
+.dialogue-btn:last-child {
+	margin-right: 0;
+}
+
+.dialogue-btn:hover {
+	background-color: #005ea8;
+}
+
+.dialogue-btn:active {
+	background-color: #004a90;
+}
+
+select:hover option:hover {
+	background-color: #ff0000;
+	color: #fff;
+}

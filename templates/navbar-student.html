@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+	{% block specialhead %}
+
+	{% endblock specialhead %}
+
+	<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+	<div class="row">
+		<nav>
+			<a href="index.html" class="web-logo"><img src="{% static 'images/logo.jpg' %}" /></a>
+			<ul class="navbar-content">
+				<li class="nav-el">
+					<a href="index.html" class="navbar-el" id="home"><i class="fa-solid fa-house"></i>Home</a>
+				</li>
+
+				<li class="nav-el dropdown">
+					<a href="javascript:void(0)" class="dropbtn navbar-el" id="courses"><i
+							class="fa-solid fa-book"></i>Courses<i class="fa fa-caret-down dropdown-icon"></i></a>
+
+					<div class="dropdown-content" id="clicked1">
+						<a href="register-courses.html">Register new course</a>
+						<a href="registered-courses.html">Registered courses</a>
+					</div>
+				</li>
+
+				<li class="nav-el">
+					<a href="student-profile.html" class="nav-el navbar-el" id="profile"><i
+							class="fa-solid fa-user"></i>Profile</a>
+				</li>
+
+				<li class="nav-el dropdown">
+					<a href="javascript:void(0)" class="dropbtn navbar-el" id="account"><i
+							class="fa-solid fa-right-to-bracket"></i>Account<i
+							class="fa fa-caret-down dropdown-icon"></i></a>
+					<div class="dropdown-content" id="clicked2">
+						<a href="change-password.html">Change password</a>
+						<a href="login.html" id="logout">Sign out</a>
+					</div>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+	<div class="container">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+	<script src="{% static 'js/nav-std.js' %}"></script>
+</body>
+
+</html>

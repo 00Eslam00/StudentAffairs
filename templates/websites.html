@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+
+<head>
+	<link rel="stylesheet" href="{% static 'css/websites.css' %}">
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="news">
+			<p class="list">Websites List</p>
+
+			<div class="post">
+				Human Resources Website
+			</div>
+
+			<div class="post" id="clickable" onclick="window.location.href = {% url 'students' %}">
+				Student Affairs website
+			</div>
+
+			<div class="post">
+				Higher studies website
+			</div>
+
+			<div class="post">
+				Laboratory tracking website
+			</div>
+		</div>
+	</div>
+
+	<!-- <script src="js/localStorage/setup-storage.js"></script> -->
+
+</body>

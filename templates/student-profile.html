@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+	<title></title>
+	<script src="https://kit.fontawesome.com/20d7ce3dd9.js" crossorigin="anonymous"></script>
+
+	<title></title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- <script src="js/std-loginChecker.js"></script> -->
+
+	<link href="{% static 'css/all.min.css' %}" rel="stylesheet" />
+	<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+	<link href="{% static 'css/admin-edit.css' %}" rel="stylesheet" />
+
+
+	<style>
+		#profile,
+		#profile i {
+			background-color: #3aa8ef;
+			color: white;
+			border-radius: 5px;
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<div id="navbar-placeholder"></div>
+
+	<h2 class="he">General information</h2>
+	<div class="cont" id="std-profile">
+		<form>
+
+			<div class="input">
+				<label for="code">ID</label>
+				<input id="code" type="text" value="2021203" disabled />
+			</div>
+
+			<div class="input">
+				<label for="name">name</label>
+				<input id="name" type="text" disabled />
+			</div>
+
+			<div class="input">
+				<label for="gpa">GPA</label>
+				<input id="gpa" type="text" disabled />
+			</div>
+
+			<div class="input">
+				<label for="hours">Total Hours</label>
+				<input id="hours" type="text" disabled />
+			</div>
+
+			<div class="input">
+				<label for="level">Level</label>
+				<input id="level" type="text" disabled />
+			</div>
+
+			<div class="input">
+				<label for="dept">Department</label>
+				<input id="dept" type="text" disabled />
+			</div>
+
+			<div class="input">
+				<label for="gender">Gender</label>
+				<input id="gender" type="text" disabled />
+			</div>
+
+			<div class="input">
+				<label for="mobile">Mobile number</label>
+				<input id="mobile" type="text" />
+			</div>
+
+			<div class="input">
+				<label for="email">E-mail</label>
+				<input id="email" type="text" />
+			</div>
+
+
+
+			<div class="buttons">
+				<button type="submit" value="save">save</button>
+			</div>
+		</form>
+	</div>
+	<script src="{% static 'js/nav-std.js' %}"></script>
+	{% comment %} <script src="{% static 'js/localStorage/setup-storage.js' %}"></script>
+	<script src="js/stdLocalStorage/profile.js"></script> {% endcomment %}
+</body>
+
+</html>

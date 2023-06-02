@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+
+	<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/register-courses.css' %}">
+	<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+	<script src="{% static 'js/std-loginChecker.js' %}"></script>
+	<style>
+		#courses,
+		#courses i {
+			background-color: #3aa8ef;
+			color: white;
+			border-radius: 5px;
+		}
+
+	</style>
+
+</head>
+
+<body>
+	<div id="navbar-placeholder"></div>
+	<div class="row-form">
+		<div class="register-box">
+			<div class="header-box">
+				Register New Course(s)
+			</div>
+			<form action="" id="crs-register-form">
+				<div class="ecourses-list">
+					<div class="l1">
+						<label for="ecourses">Eligible Courses</label>
+					</div>
+					<div>
+						<select name="ecourses" multiple id="ecourses" size="20">
+							<!-- <option value="0" id="0">HU111-Technical Report Writing</option>
+							<option value="1" id="1">IT111-Electronics</option>
+							<option value="2" id="2">ST222-Probability and Statistics-2</option>
+							<option value="3" id="3">IS231-Web Technology</option>
+							<option value="4" id="4">HU113-
+								Creative Thinking and Communication Skills</option>
+							<option value="5" id="5">CS251-
+								Introduction to Software Engineering</option>
+							<option value="6" id="6">HU121-
+								Fundamentals of Economies</option> -->
+						</select>
+					</div>
+				</div>
+				<div class="b1">
+					<button id="go_right"><i class="fa-solid fa-angles-right fa-2x"
+							style="color: #ffffff;"></i></button>
+				</div>
+				<div class="b2">
+					<button id="go_left"><i class="fa-solid fa-angles-right fa-rotate-180 fa-2x"
+							style="color: #ffffff;"></i></button>
+				</div>
+				<div class="rg-courses-list">
+					<div class="l2">
+						<label for="rg-courses">Selected Courses</label>
+					</div>
+					<div>
+						<select name="rg-courses" id="rcourses" multiple size="10">
+						</select>
+					</div>
+				</div>
+				<input type="submit" value="Submit" />
+				<input type="reset" value="Reset" id="reset" />
+			</form>
+		</div>
+	</div>
+	{% comment %} <script src="js/localStorage/setup-storage.js"></script> {% endcomment %}
+	<script src="{% static 'js/nav-std.js' %}"></script>
+	{% comment %} <script src="js/stdLocalStorage/register.js"></script> {% endcomment %}
+	<script src="{% static 'js/std-register-courses.js' %}"></script>
+</body>
+
+</html>

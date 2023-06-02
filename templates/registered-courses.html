@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
+	<script src="js/std-loginChecker.js"></script>
+
+	<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+	<link rel="stylesheet" href="{% static 'css/registered-courses.css' %}">
+	<style>
+		#courses,
+		#courses i {
+			background-color: #3aa8ef;
+			color: white;
+			border-radius: 5px;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div id="navbar-placeholder"></div>
+	<div class="box-courses">
+		<div class="box-header">
+			Student Courses
+		</div>
+		<div class="box-filter">
+			<!-- <div class="l1">
+				<div>
+					<label for="y">Year</label>
+				</div>
+				<div>
+					<select name="year" id="y">
+						<option value="0">All</option>
+						<option value="1">2021</option>
+						<option value="2">2022</option>
+						<option value="3">2023</option>
+					</select>
+				</div>
+			</div> -->
+			<div class="l2">
+				<div>
+					<label for="l">Level</label>
+				</div>
+				<div>
+					<select name="level" id="l">
+						<option value="0">All</option>
+						<option value="1">First Level</option>
+						<option value="2">Second Level</option>
+						<option value="3">Third Level</option>
+						<option value="4">Fourth Level</option>
+					</select>
+				</div>
+			</div>
+			<!-- <div class="l3">
+				<div>
+					<label for="t">Term</label>
+				</div>
+				<div>
+					<select name="term" id="t" class="term">
+						<option value="0">All</option>
+						<option value="1">First Term</option>
+						<option value="2">Second Term</option>
+						<option value="3">Summer Term</option>
+					</select>
+				</div>
+			</div> -->
+		</div>
+		<table id="myTable">
+			<thead>
+				<th>Code</th>
+				<th>Name</th>
+				<th>Hours</th>
+				<th>Grade</th>
+				<th>Term Work</th>
+				<th>Exam Work</th>
+				<th>Result</th>
+				<th>Level</th>
+			</thead>
+			<tbody>
+				<!-- <tr>
+					<td>HU117</td>
+					<td>Human hrthrthrhtrhrthtRights</td>
+					<td>2</td>
+					<td>C+</td>
+					<td>35</td>
+					<td>39</td>
+					<td>74</td>
+					<td>First Level</td>
+				</tr>
+				<tr>
+					<td>HU117</td>
+					<td>Human Rights</td>
+					<td>2</td>
+					<td>C+</td>
+					<td>35</td>
+					<td>39</td>
+					<td>74</td>
+					<td>First Level</td>
+				</tr> -->
+			</tbody>
+		</table>
+	</div>
+	{% comment %} <script src="js/localStorage/setup-storage.js"></script> {% endcomment %}
+	<script src="{% static 'js/nav-std.js' %}"></script>
+	<script src="{% static 'js/std-registered-coureses.js' %}"></script>
+	<script src="{% static 'js/stdLocalStorage/registered.js' %}"></script>
+</body>
+
+</html>
