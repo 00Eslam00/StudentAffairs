@@ -66,6 +66,9 @@ class StudentCourse(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     term = models.CharField(max_length=10)
+    classwork = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True)
+
     exam_grade = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True)
     # Add any other attributes you want to track here
