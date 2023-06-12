@@ -1,0 +1,3 @@
+students/migrations/*
+db.sqlite3
+students/__pycache__/*
