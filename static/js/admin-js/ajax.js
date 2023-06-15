@@ -1,15 +1,20 @@
-function sendAjaxRequest() {
-	// Get the value of the level field
-	var level = document.getElementById("id_level").value;
-
-	// Send an AJAX request to the server
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) {
-			// Handle the response from the server
-			console.log(level);
+export function updateDeptWithLevel(level) {
+	let departmentField = document.getElementById("id_departments")
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', '/get_departments/?level=' + level, true);
+	xhr.onload = function () {
+		if (xhr.status === 200) {
+			departmentField.innerHTML = '';
+			var data = JSON.parse(xhr.responseText);
+			data.forEach(function (department) {
+				var option = document.createElement('option');
+				option.value = department.id;
+				option.text = department.name;
+				departmentField.appendChild(option);
+			});
 		}
 	};
-	xhttp.open("GET", "/update-level/?level=" + level, true);
-	xhttp.send();
+	xhr.send();
 }
+
+

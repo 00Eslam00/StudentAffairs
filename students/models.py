@@ -65,7 +65,8 @@ class Student(models.Model):
 class StudentCourse(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    term = models.CharField(max_length=10)
+    term = models.CharField(
+        max_length=1, default='f', choices=(('f', 'First Term'), ('S', 'Second Term')))
     classwork = models.DecimalField(
         max_digits=5, decimal_places=2, null=True, blank=True)
 
