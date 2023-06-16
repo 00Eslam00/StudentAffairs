@@ -60,7 +60,7 @@ def students(request):
 	if islogin(request):
 		return render(request, 'index.html')
 	else:
-		return redirect('login/')
+		return redirect('/students/login/')
 
 def loginstd(request):
 	if request.method == 'POST':
