@@ -8,4 +8,7 @@ urlpatterns = [
     path('students/', views.students, name='students'),
     path('students/login/', views.loginstd, name='loginstd'), # type: ignore
 	path('students/logout/', views.logoutstd, name='logoutstd'),
+	path('students/profile/', views.studentProfile, name='profile'),
+	path('students/registered-courses/', views.registered, name='registered'),
+
 ]

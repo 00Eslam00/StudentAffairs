@@ -1,18 +1,51 @@
-<div class="row">
-	{% load static %}
-	<nav>
-		<a href="index.html" class="web-logo"><img src="{% static 'images/logo.jpg' %}" /></a>
-		<ul class="navbar-content">
-			<li class="nav-el">
-				<a href="index.html" class="navbar-el" id="home"><i class="fa-solid fa-house"></i>Home</a>
-			</li>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+
+	{% block specialhead %}
+
+	{% endblock specialhead %}
+
+	<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
 
 
-			<li class="nav-el">
-				<a href="logtttin.html" class="nav-el navbar-el" id="login"><i class="fa-solid fa-user"></i>Login</a>
-			</li>
+	<div class="row">
+		{% load static %}
+		<nav>
+			<a href="{% url 'students' %}" class="web-logo"><img src="{% static 'images/logo.jpg' %}" /></a>
+			<ul class="navbar-content">
+				<li class="nav-el">
+					<a href="{% url 'students' %}" class="navbar-el" id="home"><i class="fa-solid fa-house"></i>Home</a>
+				</li>
 
 
-		</ul>
-	</nav>
-</div>
+				<li class="nav-el">
+					<a href="{% url 'loginstd' %}" class="nav-el navbar-el" id="login"><i
+							class="fa-solid fa-user"></i>Login</a>
+				</li>
+
+
+			</ul>
+		</nav>
+	</div>
+
+	<div class="container">
+		{% block content %}
+		{% endblock %}
+	</div>
+
+	<script src="{% static 'js/nav-std.js' %}"></script>
+
+</body>
+
+</html>

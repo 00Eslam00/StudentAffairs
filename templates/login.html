@@ -1,15 +1,10 @@
-{% if user.auth %}
-
-{% endif %}
+{% extends 'navbar-login.html' %}
 
 
-<!DOCTYPE html>
-<html>
 {% load static %}
 
-<head>
+{% block specialhead %}
 
-	<title>Login</title>
 	<meta name="description" content="Login to your account">
 
 
@@ -80,11 +75,11 @@
 		}
 	</style>
 
-</head>
+	{% endblock specialhead %}
+	{% block title %}Login{% endblock %}
 
 
-
-<body>
+	{% block content %}
 	<div id="navbar-placeholder" class="nav-changer"></div>
 
 
@@ -114,7 +109,8 @@
 	{% endif %}
 
 
-	{% comment %} <script src="{% static 'js/nav-std.js' %}"></script> {% endcomment %}
+	{% comment %}
+	<script src="{% static 'js/nav-std.js' %}"></script> {% endcomment %}
 
 	<script>
 		document.addEventListener('click', function (e) {
@@ -129,6 +125,5 @@
 		});
 	</script>
 
-</body>
+	{% endblock %}
 
-</html>

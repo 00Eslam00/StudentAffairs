@@ -1,4 +1,9 @@
-{% extends 'navbar-student.html' %}
+{% extends nav %}
+
+
+{% comment %} {% if not islogin %}
+{% extends 'navbar-login.html' %} {% endcomment %}
+
 
 {% load static %}
 
@@ -6,23 +11,21 @@
 {% block specialhead %}
 
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
-	<style>
-		nav #home,
-		nav #home i {
-			background-color: #3aa8ef;
-			color: white;
-			border-radius: 5px;
-		}
-	</style>
+<style>
+	nav #home,
+	nav #home i {
+		background-color: #3aa8ef;
+		color: white;
+		border-radius: 5px;
+	}
+</style>
 {% endblock specialhead %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
-	<p class="posts-title">Posts</p>
-	<div class="news"></div>
+<p class="posts-title">Posts</p>
+<div class="news"></div>
 {% endblock %}
-
-
 
 

@@ -37,17 +37,17 @@ def islogin(request):
 		password = std.password
 		print(username, usernamec, password, passwordc)
 		if usernamec == username and passwordc == password:
-			print("yes")
+
 			return True
 	except Exception as e:
-		print('error', e)
+
 		return False
 	else:
-		print('no')
+
 		return False
 
 def getusername(request):
-    return request.COOKIES.get('username')
+	return request.COOKIES.get('username')
 
 # render functions
 
@@ -58,9 +58,9 @@ def index(request):
 
 def students(request):
 	if islogin(request):
-		return render(request, 'index.html')
+		return render(request, 'index.html', {'nav': 'navbar-student.html'})
 	else:
-		return redirect('/students/login/')
+		return render(request, 'index.html', {'nav':'navbar-login.html'})
 
 def loginstd(request):
 	if request.method == 'POST':
@@ -83,7 +83,7 @@ def loginstd(request):
 				return res
 		except Exception as e:
 			print(e)
-			return render(request, 'login.html', {'error': "error ocured"})
+			return render(request, 'login.html', {'error': "userid doesn't match password"})
 
 	elif islogin(request):
 		return redirect('/students/')
@@ -98,3 +98,30 @@ def logoutstd(request):
 	res.delete_cookie('username')
 	res.delete_cookie('password')
 	return res
+
+
+def studentProfile(request):
+	if islogin(request):
+		myid = int(getusername(request))
+		std = Student.objects.get(id=myid)
+		context = {
+			'student':std
+		}
+		if request.method == 'POST':
+			mail = request.POST.get('stud_email')
+			mobile = request.POST.get('stud_mobile')
+			std.email = mail
+			std.phone = mobile
+			std.save()
+			return redirect(request.path)
+
+		# Render the search form template
+		return render(request,'student-profile.html',context)
+	else:
+		return redirect('/students/login')
+
+def registered(request):
+	myid = int(getusername(request))
+	crss = StudentCourse.objects.get(student=myid)
+	print(crss)
+	return HttpResponse('200')

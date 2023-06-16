@@ -31,12 +31,12 @@
 
 					<div class="dropdown-content" id="clicked1">
 						<a href="register-courses.html">Register new course</a>
-						<a href="registered-courses.html">Registered courses</a>
+						<a href="{% url 'registered' %}">Registered courses</a>
 					</div>
 				</li>
 
 				<li class="nav-el">
-					<a href="student-profile.html" class="nav-el navbar-el" id="profile"><i
+					<a href="{% url 'profile' %}" class="nav-el navbar-el" id="profile"><i
 							class="fa-solid fa-user"></i>Profile</a>
 				</li>
 
