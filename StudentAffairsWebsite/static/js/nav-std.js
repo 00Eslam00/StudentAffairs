@@ -41,29 +41,29 @@ window.onclick = function (e) {
 
 
 
-document.addEventListener("click", (event) => {
+// document.addEventListener("click", (event) => {
 
-	if (event.target.id == "logout") {
-		event.preventDefault();
-		localStorage.setItem("Student-login", '');
-		window.location.href = "login.html";
-	}
+// 	if (event.target.id == "logout") {
+// 		event.preventDefault();
+// 		localStorage.setItem("Student-login", '');
+// 		window.location.href = "login.html";
+// 	}
 
-})
+// })
 
 
 // Load the navbar inside html page
-document.addEventListener("DOMContentLoaded", function () {
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function () {
-		if (this.readyState === 4 && this.status === 200) {
-			document.getElementById("navbar-placeholder").innerHTML = this.responseText;
-		}
-	};
+// document.addEventListener("DOMContentLoaded", function () {
+// 	var xhr = new XMLHttpRequest();
+// 	xhr.onreadystatechange = function () {
+// 		if (this.readyState === 4 && this.status === 200) {
+// 			document.getElementById("navbar-placeholder").innerHTML = this.responseText;
+// 		}
+// 	};
 
-	if (localStorage.getItem("Student-login") == '' && document.querySelector(".nav-changer"))
-		xhr.open("GET", "navbar-login.html", true);
-	else
-		xhr.open("GET", "navbar-student.html", true);
-	xhr.send();
-});
+// 	if (localStorage.getItem("Student-login") == '' && document.querySelector(".nav-changer"))
+// 		xhr.open("GET", "navbar-login.html", true);
+// 	else
+// 		xhr.open("GET", "navbar-student.html", true);
+// 	xhr.send();
+// });

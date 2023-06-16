@@ -19,10 +19,10 @@
 <body>
 	<div class="row">
 		<nav>
-			<a href="index.html" class="web-logo"><img src="{% static 'images/logo.jpg' %}" /></a>
+			<a href="{% url 'students' %}" class="web-logo"><img src="{% static 'images/logo.jpg' %}" /></a>
 			<ul class="navbar-content">
 				<li class="nav-el">
-					<a href="index.html" class="navbar-el" id="home"><i class="fa-solid fa-house"></i>Home</a>
+					<a href="{% url 'students' %}" class="navbar-el" id="home"><i class="fa-solid fa-house"></i>Home</a>
 				</li>
 
 				<li class="nav-el dropdown">
@@ -46,7 +46,7 @@
 							class="fa fa-caret-down dropdown-icon"></i></a>
 					<div class="dropdown-content" id="clicked2">
 						<a href="change-password.html">Change password</a>
-						<a href="login.html" id="logout">Sign out</a>
+						<a href="{% url 'logoutstd' %}" id="logout">Sign out</a>
 					</div>
 				</li>
 			</ul>

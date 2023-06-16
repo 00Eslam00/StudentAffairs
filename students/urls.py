@@ -6,4 +6,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('get_departments/', views.get_departments, name='get_departments'),
     path('students/', views.students, name='students'),
+    path('students/login/', views.loginstd, name='loginstd'), # type: ignore
+	path('students/logout/', views.logoutstd, name='logoutstd'),
 ]

@@ -53,13 +53,13 @@ window.onclick = function (e) {
 
 
 
-document.addEventListener("click", (event) => {
+// document.addEventListener("click", (event) => {
 
-	if (event.target.id == "logout") {
-		event.preventDefault();
-		localStorage.setItem("Admin-login", '');
-		window.location.href = "login.html";
-	}
+// 	if (event.target.id == "logout") {
+// 		event.preventDefault();
+// 		localStorage.setItem("Admin-login", '');
+// 		window.location.href = "login.html";
+// 	}
 
-})
+// })
 
