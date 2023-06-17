@@ -1,9 +1,7 @@
-<!DOCTYPE html>
+{% extends 'navbar-student.html' %}
 {% load static %}
-<html>
 
-<head>
-
+{% block specialhead %}
 	<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
 	<link rel="stylesheet" href="{% static 'css/register-courses.css' %}">
 	<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
@@ -18,10 +16,9 @@
 
 	</style>
 
-</head>
+{% endblock specialhead %}
 
-<body>
-	<div id="navbar-placeholder"></div>
+{% block content %}
 	<div class="row-form">
 		<div class="register-box">
 			<div class="header-box">
@@ -70,9 +67,6 @@
 		</div>
 	</div>
 	{% comment %} <script src="js/localStorage/setup-storage.js"></script> {% endcomment %}
-	<script src="{% static 'js/nav-std.js' %}"></script>
 	{% comment %} <script src="js/stdLocalStorage/register.js"></script> {% endcomment %}
 	<script src="{% static 'js/std-register-courses.js' %}"></script>
-</body>
-
-</html>
+{% endblock content %}

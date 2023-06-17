@@ -140,4 +140,6 @@ def changePassword(request):
 		return res
 	else:
 		return res
-	
+
+def register(request):
+	return render(request, 'register-courses.html')

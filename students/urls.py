@@ -10,6 +10,7 @@ urlpatterns = [
 	path('students/logout/', views.logoutstd, name='logoutstd'),
 	path('students/profile/', views.studentProfile, name='profile'),
 	path('students/registered-courses/', views.registered, name='registered'),
+	path('students/register-courses/', views.register, name='register'),
     path('students/changePassword/', views.changePassword,name='changePassword'), # type: ignore
 
 ]
