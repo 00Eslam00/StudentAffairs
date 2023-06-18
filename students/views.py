@@ -49,6 +49,36 @@ def islogin(request):
 def getusername(request):
 	return request.COOKIES.get('username')
 
+
+def calculate_grade(score):
+	if score >= 90:
+		return "A+"
+	elif score >= 80:
+		return "A"
+	elif score >= 70:
+		return "B"
+	elif score >= 60:
+		return "C"
+	elif score >= 50:
+		return "D"
+	else:
+		return "F"
+
+
+def gettotalhours(stdid):
+	crss = StudentCourse.objects.filter(student=stdid)
+	totalh = 0
+	for crs in crss:
+
+		crswork = crs.classwork
+		crsexam = crs.exam_grade
+		if not(crswork == None or crsexam == None):
+			totalh += crs.course.credit
+	return totalh
+
+
+def gettotalgpa(stdid):
+	crss = StudentCourse.objects.filter(student=stdid)
 # render functions
 
 
@@ -122,6 +152,25 @@ def studentProfile(request):
 
 def registered(request):
 	myid = int(getusername(request))
-	crss = StudentCourse.objects.get(student=myid)
+	crss = StudentCourse.objects.filter(student=myid)
+	allcourses = []
+	for crs in crss:
+		crsid = crs.course.id
+		crsname = crs.course.name
+		crscredit = crs.course.credit
+		crswork = crs.classwork
+		crsexam = crs.exam_grade
+		if crswork == None or crsexam == None:
+			crstotal = None
+			crsgrade = None
+		else:
+			crstotal = int(crswork)+int(crsexam) # type: ignore
+			crsgrade = calculate_grade(crstotal)
+
+		crslevel = crs.course.level
+		allcourses.append({'id':crsid, 'name':crsname, 'credit':crscredit, 'work':crswork, 'exam':crsexam, 'total':crstotal, 'grade': crsgrade, 'level': crslevel})
+
+
+
 	print(crss)
-	return HttpResponse('200')
+	return render(request, "registered-courses.html", {'courses':allcourses })
