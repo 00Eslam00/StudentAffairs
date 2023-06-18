@@ -6,6 +6,7 @@ function handleClick(event) {
 // Show the dropdown list when click the dropdown icon and make it active
 document.addEventListener('click', function (event) {
 	const clickedElementId = handleClick(event);
+	console.log(clickedElementId);
 	var clicked_items = ["clicked1", "clicked2"];
 	var dropdown_items = ["courses", "account"];
 	for (var i = 0; i < dropdown_items.length; i++) {
