@@ -30,7 +30,7 @@
 							class="fa-solid fa-book"></i>Courses<i class="fa fa-caret-down dropdown-icon"></i></a>
 
 					<div class="dropdown-content" id="clicked1">
-						<a href="register-courses.html">Register new course</a>
+						<a href="{% url 'register' %}">Register new course</a>
 						<a href="{% url 'registered' %}">Registered courses</a>
 					</div>
 				</li>
@@ -45,7 +45,7 @@
 							class="fa-solid fa-right-to-bracket"></i>Account<i
 							class="fa fa-caret-down dropdown-icon"></i></a>
 					<div class="dropdown-content" id="clicked2">
-						<a href="change-password.html">Change password</a>
+						<a href="{%url 'changePassword' %}">Change password</a>
 						<a href="{% url 'logoutstd' %}" id="logout">Sign out</a>
 					</div>
 				</li>

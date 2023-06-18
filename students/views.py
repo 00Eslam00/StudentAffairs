@@ -170,7 +170,24 @@ def registered(request):
 		crslevel = crs.course.level
 		allcourses.append({'id':crsid, 'name':crsname, 'credit':crscredit, 'work':crswork, 'exam':crsexam, 'total':crstotal, 'grade': crsgrade, 'level': crslevel})
 
-
-
 	print(crss)
 	return render(request, "registered-courses.html", {'courses':allcourses })
+
+
+def changePassword(request):
+	res = render(request,'change-password.html')
+	if request.method == 'POST':
+		oldPass = request.POST.get('old-pass')
+		stID = int(getusername(request))
+		st = Student.objects.get(id=stID)
+		if st.password == oldPass and request.POST.get('new-pass') == request.POST.get('confirm-pass'):
+			st.password = request.POST.get('new-pass')
+			res.set_cookie('password', request.POST.get('new-pass'))
+			st.save()
+		return res
+	else:
+		return res
+
+def register(request):
+	return render(request, 'register-courses.html')
+
