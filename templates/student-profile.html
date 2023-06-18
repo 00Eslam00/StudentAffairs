@@ -3,96 +3,91 @@
 {% load static %}
 
 {% block specialhead %}
-  <title></title>
-  <script src="https://kit.fontawesome.com/20d7ce3dd9.js" crossorigin="anonymous"></script>
+<title></title>
+<script src="https://kit.fontawesome.com/20d7ce3dd9.js" crossorigin="anonymous"></script>
 
-  <title></title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- <script src="js/student-loginChecker.js"></script> -->
+<!-- <script src="js/student-loginChecker.js"></script> -->
 
-  <link href="{% static 'css/all.min.css' %}" rel="stylesheet" />
-  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-  <link href="{% static 'css/admin-edit.css' %}" rel="stylesheet" />
-
-
-  <style>
-    #profile,
-    #profile i {
-      background-color: #3aa8ef;
-      color: white;
-      border-radius: 5px;
-    }
-
-  </style>
-  {% endblock specialhead %}
-
-  {% block title %}Profile{% endblock %}
-
-  {% block content %}
-
-  <div id="navbar-placeholder"></div>
-
-  <h2 class="he">General information</h2>
-  <div class="cont" id="student-profile">
-    <form method="POST">
-      {% csrf_token %}
-      <div class="input">
-        <label for="code">ID</label>
-        <input id="code" type="text" value="{{student.id}}" disabled/>
-      </div>
-
-      <div class="input">
-        <label for="name">name</label>
-        <input id="name" type="text" value="{{student.name}}"  disabled />
-      </div>
-
-      <div class="input">
-        <label for="gpa">GPA</label>
-        <input id="gpa" type="text"  disabled />
-      </div>
-
-      <div class="input">
-        <label for="hours">Total Hours</label>
-        <input id="hours" type="text"  disabled />
-      </div>
-
-      <div class="input">
-        <label for="level">Level</label>
-        <input id="level" type="text" value="{{student.level}}" disabled />
-      </div>
-
-      <div class="input">
-        <label for="dept">Department</label>
-        <input id="dept" type="text" value="{{student.departments}}" disabled />
-      </div>
-
-      <div class="input">
-        <label for="gender">Gender</label>
-        <input id="gender" type="text" value="{{student.gender}}" disabled />
-      </div>
-
-      <div class="input">
-        <label for="mobile">Mobile number</label>
-        <input id="mobile" type="text" name="stud_mobile" value="{{student.phone}}" />
-      </div>
-
-      <div class="input">
-        <label for="email">E-mail</label>
-        <input id="email" type="text" name="stud_email" value="{{student.email}}" />
-      </div>
+<link href="{% static 'css/all.min.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link href="{% static 'css/admin-edit.css' %}" rel="stylesheet" />
 
 
+<style>
+	#profile,
+	#profile i {
+		background-color: #3aa8ef;
+		color: white;
+		border-radius: 5px;
+	}
+</style>
+{% endblock specialhead %}
 
-      <div class="buttons">
-        <button type="submit" >save</button>
-      </div>
-    </form>
-  </div>
-  <script src="{% static 'js/nav-student.js' %}"></script>
-  {% comment %} <script src="{% static 'js/localStorage/setup-storage.js' %}"></script>
-  <script src="js/studentLocalStorage/profile.js"></script> {% endcomment %}
-  {% endblock %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<div id="navbar-placeholder"></div>
+
+<h2 class="he">General information</h2>
+<div class="cont" id="student-profile">
+	<form method="POST">
+		{% csrf_token %}
+		<div class="input">
+			<label for="code">ID</label>
+			<input id="code" type="text" value="{{student.id}}" disabled />
+		</div>
+
+		<div class="input">
+			<label for="name">name</label>
+			<input id="name" type="text" value="{{student.name}}" disabled />
+		</div>
+
+		<div class="input">
+			<label for="gpa">GPA</label>
+			<input id="gpa" type="text" disabled />
+		</div>
+
+		<div class="input">
+			<label for="hours">Total Hours</label>
+			<input id="hours" type="text" disabled />
+		</div>
+
+		<div class="input">
+			<label for="level">Level</label>
+			<input id="level" type="text" value="{{student.level}}" disabled />
+		</div>
+
+		<div class="input">
+			<label for="dept">Department</label>
+			<input id="dept" type="text" value="{{student.departments}}" disabled />
+		</div>
+
+		<div class="input">
+			<label for="gender">Gender</label>
+			<input id="gender" type="text" value="{{student.gender}}" disabled />
+		</div>
+
+		<div class="input">
+			<label for="mobile">Mobile number</label>
+			<input id="mobile" type="text" name="stud_mobile" value="{{student.phone}}" />
+		</div>
+
+		<div class="input">
+			<label for="email">E-mail</label>
+			<input id="email" type="text" name="stud_email" value="{{student.email}}" />
+		</div>
 
 
+
+		<div class="buttons">
+			<button type="submit">save</button>
+		</div>
+	</form>
+</div>
+{% comment %} <script src="{% static 'js/nav-student.js' %}"></script> {% endcomment %}
+{% endblock %}
