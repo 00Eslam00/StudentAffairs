@@ -1,3 +1,4 @@
 students/migrations/*
 db.sqlite3
-students/__pycache__/*
+students/__pycache__/*.pyc
+students/__pycache__/views.cpython-310.pyc
