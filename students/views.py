@@ -249,5 +249,16 @@ def register(request):
 	context = {
 		'courses': availabeCourses,
 	}
+
+	if request.method == 'GET':
+		selectedCrs = request.GET.getlist('rg-courses')
+		print("Selected Options: ")
+		print(selectedCrs)
+	else:
+		selectedCrs = []
+	
+	# for crs in selectedCrs:
+	# 	sc = StudentCourse(student=stdID,course=crs)
+	# 	sc.save()
 	return render(request, 'register-courses.html', context)
 
