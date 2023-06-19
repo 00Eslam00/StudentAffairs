@@ -29,14 +29,14 @@ class Department(models.Model):
 
 class Course(models.Model):
 	id = models.CharField(primary_key=True, max_length=15)
-	name = models.CharField(max_length=35)
+	name = models.CharField(max_length=50)
 	level = models.IntegerField(
 		validators=[MinValueValidator(1), MaxValueValidator(4)], default=1)
 	departments = models.ForeignKey(
 		Department, on_delete=models.CASCADE)
 	credit = models.IntegerField(
 		validators=[MinValueValidator(0), MaxValueValidator(3)], default=0)
-	pre_Courses = models.ManyToManyField('self', blank=True)
+	pre_Courses = models.ManyToManyField('self', blank=True, symmetrical=False)
 
 	def __str__(self):
 		return self.name
@@ -58,6 +58,8 @@ class Student(models.Model):
 	phone = models.CharField(max_length=15, null=True, blank=True)
 	stat = models.BooleanField(default=True)
 
+	def __str__(self):
+		return self.name
 
 
 class StudentCourse(models.Model):
