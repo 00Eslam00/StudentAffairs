@@ -188,6 +188,66 @@ def changePassword(request):
 	else:
 		return res
 
+def isTalken(course, stdCrs):
+	for c in stdCrs:
+		if course == c.course:
+			return True
+	return False
+
+def filterCourses(courses, std, stdCrs):
+	finalCourses = []
+	print(courses)
+	# print("Student Courses: ")
+	# for s in stdCrs:
+	# 	print("Here: ")
+	# 	print(s.course)
+	# print(stdCrs)
+	for crs in courses:
+		flag = True
+		precrs = crs.pre_Courses.all()
+		# print("Cours: ")
+		# print(crs)
+		# print("Pre Courses: ")
+		# print(precrs)
+		# print()
+		for pcrs in precrs:
+			isHere = False
+			# print("Inside for----------------------")
+			# print(pcrs)
+			for scrs in stdCrs:
+				if scrs.course == pcrs:
+					isHere = True
+					# print("Inside if--------------------")
+					# print("Cours: ")
+					# print(crs)
+					# print("Pre Course: ")
+					# print(pcrs)
+			if not isHere:
+				flag = False
+				break
+		if flag and not isTalken(crs, stdCrs):
+			# print(crs)
+			finalCourses.append(crs)
+
+	# for crs in finalCourses:
+	# 	print(crs)
+	return finalCourses
+
+
+
+
 def register(request):
-	return render(request, 'register-courses.html')
+	stdID = int(getusername(request))
+	std = Student.objects.get(id=stdID)
+	stdCrs = StudentCourse.objects.filter(student=stdID)
+	availabeCourses = Course.objects.filter(level__range = [1, std.level], 
+					 departments__in = ['Gen111' , std.departments])
+	
+	availabeCourses = filterCourses(availabeCourses, std, stdCrs)
+	# print("Available Courses: ")
+	# print(availabeCourses)
+	context = {
+		'courses': availabeCourses,
+	}
+	return render(request, 'register-courses.html', context)
 
