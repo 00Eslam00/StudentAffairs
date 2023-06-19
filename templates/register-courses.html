@@ -24,7 +24,8 @@
 			<div class="header-box">
 				Register New Course(s)
 			</div>
-			<form action="" id="crs-register-form">
+			<form action="" id="crs-register-form" method="get">
+				{% csrf_token %}
 				<div class="ecourses-list">
 					<div class="l1">
 						<label for="ecourses">Eligible Courses</label>
@@ -32,7 +33,7 @@
 					<div>
 						<select name="ecourses" multiple id="ecourses" size="20">
 							{% for crs in courses %}
-								<option>{{crs.id}}-{{crs.name}}</option>
+								<option name="{{crs.id}}">{{crs.id}}-{{crs.name}}</option>
 							{% endfor %}
 							<!-- <option value="0" id="0">HU111-Technical Report Writing</option>
 							<option value="1" id="1">IT111-Electronics</option>
