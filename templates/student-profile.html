@@ -49,12 +49,12 @@
 
 		<div class="input">
 			<label for="gpa">GPA</label>
-			<input id="gpa" type="text" disabled />
+			<input id="gpa" type="text" value="{{gpa}}" disabled />
 		</div>
 
 		<div class="input">
 			<label for="hours">Total Hours</label>
-			<input id="hours" type="text" disabled />
+			<input id="hours" type="text" value="{{hours}}" disabled />
 		</div>
 
 		<div class="input">
@@ -89,5 +89,6 @@
 		</div>
 	</form>
 </div>
-{% comment %} <script src="{% static 'js/nav-student.js' %}"></script> {% endcomment %}
+{% comment %}
+<script src="{% static 'js/nav-student.js' %}"></script> {% endcomment %}
 {% endblock %}

@@ -13,6 +13,10 @@ from django.shortcuts import render
 # Register your models here.
 
 
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    pass
+
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
 	change_form_template = "adminstrator/student.html"
@@ -54,7 +58,7 @@ class CourseAdmin(admin.ModelAdmin):
 
 	def add_view(self, request, form_url='', extra_context=None):
 		department_exists = Department.objects.filter(id='Gen111').exists()
-		return super().add_view(request, form_url, extra_context={'department_exists': department_exists, })
+		return super().add_view(request, form_url, extra_context={'department_exists':department_exists})
 
 	def change_view(self, request, object_id, form_url='', extra_context=None):
 		department_exists = Department.objects.filter(id='Gen111').exists()
@@ -63,4 +67,4 @@ class CourseAdmin(admin.ModelAdmin):
 
 @admin.register(StudentCourse)
 class StudentCourseAdmin(admin.ModelAdmin):
-	list_display = ['student', 'course', 'term', 'exam_grade']
+	list_display = ['student', 'course', 'term','classwork', 'exam_grade']

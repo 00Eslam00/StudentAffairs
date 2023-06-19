@@ -1,3 +1,4 @@
+from audioop import reverse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -64,6 +65,27 @@ def calculate_grade(score):
 	else:
 		return "F"
 
+def convert_grade_to_gpa(grade):
+    if grade >= 90:
+        return 4.0
+    elif grade >= 85:
+        return 3.7
+    elif grade >= 80:
+        return 3.4
+    elif grade >= 75:
+        return 3.0
+    elif grade >= 70:
+        return 2.7
+    elif grade >= 65:
+        return 2.4
+    elif grade >= 60:
+        return 2.0
+    elif grade >= 55:
+        return 1.7
+    elif grade >= 50:
+        return 1.5
+    else:
+        return 0.0
 
 def gettotalhours(stdid):
 	crss = StudentCourse.objects.filter(student=stdid)
@@ -72,25 +94,41 @@ def gettotalhours(stdid):
 
 		crswork = crs.classwork
 		crsexam = crs.exam_grade
-		if not(crswork == None or crsexam == None):
+		if not(crswork == None or crsexam == None) and crsexam+crswork > 50:
 			totalh += crs.course.credit
 	return totalh
 
 
 def gettotalgpa(stdid):
 	crss = StudentCourse.objects.filter(student=stdid)
+	totcrss = 0
+	totgpa = 0
+	for crs in crss:
+
+		crswork = crs.classwork
+		crsexam = crs.exam_grade
+		if not(crswork == None or crsexam == None) and crsexam+crswork > 50:
+			totcrss +=1
+			totgpa += convert_grade_to_gpa(crsexam+crswork)
+	if totcrss == 0:
+		return 0
+	else:
+		return totgpa/totcrss
 # render functions
 
 
 def index(request):
+
 	return render(request, 'websites.html')
 
 
 def students(request):
+	posts = list(Post.objects.all())
+	posts = posts[::-1]
 	if islogin(request):
-		return render(request, 'index.html', {'nav': 'navbar-student.html'})
+		return render(request, 'index.html', {'nav': 'navbar-student.html', 'posts':posts})
 	else:
-		return render(request, 'index.html', {'nav':'navbar-login.html'})
+		return render(request, 'index.html', {'nav':'navbar-login.html', 'posts':posts})
 
 def loginstd(request):
 	if request.method == 'POST':
@@ -135,7 +173,9 @@ def studentProfile(request):
 		myid = int(getusername(request))
 		std = Student.objects.get(id=myid)
 		context = {
-			'student':std
+			'student':std,
+			'gpa': gettotalgpa(std.id),
+			'hours': gettotalhours(std.id)
 		}
 		if request.method == 'POST':
 			mail = request.POST.get('stud_email')
@@ -240,9 +280,9 @@ def register(request):
 	stdID = int(getusername(request))
 	std = Student.objects.get(id=stdID)
 	stdCrs = StudentCourse.objects.filter(student=stdID)
-	availabeCourses = Course.objects.filter(level__range = [1, std.level], 
+	availabeCourses = Course.objects.filter(level__range = [1, std.level],
 					 departments__in = ['Gen111' , std.departments])
-	
+
 	availabeCourses = filterCourses(availabeCourses, std, stdCrs)
 	# print("Available Courses: ")
 	# print(availabeCourses)
@@ -256,9 +296,8 @@ def register(request):
 		print(selectedCrs)
 	else:
 		selectedCrs = []
-	
+
 	# for crs in selectedCrs:
 	# 	sc = StudentCourse(student=stdID,course=crs)
 	# 	sc.save()
 	return render(request, 'register-courses.html', context)
-
