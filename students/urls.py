@@ -12,5 +12,6 @@ urlpatterns = [
 	path('students/registered-courses/', views.registered, name='registered'),
 	path('students/register-courses/', views.register, name='register'),
     path('students/changePassword/', views.changePassword,name='changePassword'), # type: ignore
+    path('students/register-courses/submit', views.rg_submit, name='rg_submit') # type: ignore
 
 ]
