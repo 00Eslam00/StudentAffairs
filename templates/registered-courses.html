@@ -73,38 +73,18 @@
 			<th>Level</th>
 		</thead>
 		<tbody>
-
 			{% for crs in courses %}
-			<td>{{ crs.id|default:'' }}</td>
-			<td>{{ crs.name|default:'' }}</td>
-			<td>{{ crs.credit|default:'' }}</td>
-			<td>{{ crs.grade|default:'' }}</td>
-			<td>{{ crs.work|default:'' }}</td>
-			<td>{{ crs.exam|default:'' }}</td>
-			<td>{{ crs.total|default:'' }}</td>
-			<td level={{crs.level}}>{{ crs.level|default:'' }}</td>
-			{% endfor %}
-
-			<!-- <tr>
-					<td>HU117</td>
-					<td>Human hrthrthrhtrhrthtRights</td>
-					<td>2</td>
-					<td>C+</td>
-					<td>35</td>
-					<td>39</td>
-					<td>74</td>
-					<td>First Level</td>
-				</tr>
 				<tr>
-					<td>HU117</td>
-					<td>Human Rights</td>
-					<td>2</td>
-					<td>C+</td>
-					<td>35</td>
-					<td>39</td>
-					<td>74</td>
-					<td>First Level</td>
-				</tr> -->
+					<td>{{ crs.id|default:'' }}</td>
+					<td>{{ crs.name|default:'' }}</td>
+					<td>{{ crs.credit|default:'' }}</td>
+					<td>{{ crs.grade|default:'' }}</td>
+					<td>{{ crs.work|default:'' }}</td>
+					<td>{{ crs.exam|default:'' }}</td>
+					<td>{{ crs.total|default:'' }}</td>
+					<td level={{crs.level}}>{{ crs.level|default:'' }}</td>
+				</tr>
+			{% endfor %}
 		</tbody>
 	</table>
 </div>
