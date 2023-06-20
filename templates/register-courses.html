@@ -13,8 +13,42 @@
 			color: white;
 			border-radius: 5px;
 		}
-
 	</style>
+	<script>
+		window.addEventListener('DOMContentLoaded', function() {
+			// Find the form element
+			var form = document.getElementById('crs-register-form');
+			var rgCoursesSelect = document.getElementById('rcourses');
+			// Add a submit event listener to the form
+			form.addEventListener('submit', function(event) {
+				// Prevent the default form submission behavior
+				event.preventDefault();
+
+				var formData = new FormData(form);
+				// Add selected options from rg-courses select element
+				var selectedOptions = rgCoursesSelect.options;
+				for (var i = 0; i < selectedOptions.length; i++) {
+					formData.append('rg-courses', selectedOptions[i].value);
+				}
+				// console.log(formData);
+				fetch('/students/register-courses/submit', {
+					method: 'POST',
+					body: formData
+				})
+				.then(response => {
+						if (response.ok) {
+							location.reload();
+							window.alert("Courses added successfully")
+						} else {
+							throw new Error('Network response was not ok');
+						}
+					})
+					.catch(error => {
+						// handle error
+					});
+			});
+		});
+  	</script>
 
 {% endblock specialhead %}
 
@@ -24,7 +58,7 @@
 			<div class="header-box">
 				Register New Course(s)
 			</div>
-			<form action="" id="crs-register-form" method="get">
+			<form action="/submit" id="crs-register-form" method="post">
 				{% csrf_token %}
 				<div class="ecourses-list">
 					<div class="l1">
@@ -65,7 +99,7 @@
 						</select>
 					</div>
 				</div>
-				<input type="submit" value="Submit" />
+				<input type="submit" value="Submit" id="submit"/>
 				<input type="reset" value="Reset" id="reset" />
 			</form>
 		</div>
