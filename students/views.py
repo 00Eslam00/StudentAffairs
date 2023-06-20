@@ -236,41 +236,20 @@ def isTalken(course, stdCrs):
 
 def filterCourses(courses, std, stdCrs):
 	finalCourses = []
-	print(courses)
-	# print("Student Courses: ")
-	# for s in stdCrs:
-	# 	print("Here: ")
-	# 	print(s.course)
-	# print(stdCrs)
 	for crs in courses:
 		flag = True
 		precrs = crs.pre_Courses.all()
-		# print("Cours: ")
-		# print(crs)
-		# print("Pre Courses: ")
-		# print(precrs)
-		# print()
 		for pcrs in precrs:
 			isHere = False
-			# print("Inside for----------------------")
-			# print(pcrs)
 			for scrs in stdCrs:
 				if scrs.course == pcrs:
 					isHere = True
-					# print("Inside if--------------------")
-					# print("Cours: ")
-					# print(crs)
-					# print("Pre Course: ")
-					# print(pcrs)
 			if not isHere:
 				flag = False
 				break
 		if flag and not isTalken(crs, stdCrs):
-			# print(crs)
 			finalCourses.append(crs)
 
-	# for crs in finalCourses:
-	# 	print(crs)
 	return finalCourses
 
 
@@ -284,20 +263,25 @@ def register(request):
 					 departments__in = ['Gen111' , std.departments])
 
 	availabeCourses = filterCourses(availabeCourses, std, stdCrs)
-	# print("Available Courses: ")
-	# print(availabeCourses)
 	context = {
 		'courses': availabeCourses,
 	}
 
-	if request.method == 'GET':
-		selectedCrs = request.GET.getlist('rg-courses')
-		print("Selected Options: ")
+	return render(request, 'register-courses.html', context)
+
+def rg_submit(request):
+	# print("Adham")
+	stdID = int(getusername(request))
+	std = Student.objects.get(id=stdID)
+	if request.method == 'POST':
+		selectedCrs = request.POST.getlist('rg-courses')
 		print(selectedCrs)
+		for crs in selectedCrs:
+			course_id = crs.split('-')[0]
+			rgcourse = Course.objects.get(id=course_id)
+			student_course = StudentCourse(student=std, course=rgcourse)
+			student_course.save()
 	else:
 		selectedCrs = []
-
-	# for crs in selectedCrs:
-	# 	sc = StudentCourse(student=stdID,course=crs)
-	# 	sc.save()
-	return render(request, 'register-courses.html', context)
+	
+	return HttpResponse("200")
